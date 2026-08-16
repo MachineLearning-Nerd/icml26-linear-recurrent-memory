@@ -9,7 +9,7 @@ Observable Reinforcement Learning** (ICML 2026).
 - **Paper:** [arXiv:2605.31261](https://arxiv.org/abs/2605.31261)
 - **OpenReview:** [ywjHJIkUgW](https://openreview.net/forum?id=ywjHJIkUgW)
 - **Canonical audit repository:** <https://github.com/MachineLearning-Nerd/icml26-linear-recurrent-memory>
-- **Original collection entry:** `icml26-repro-ywjHJIkUgW-linear-recurrent-memory`
+- **Collection:** ICML 2026 reproduction audit collection
 
 The paper studies why linear recurrent memories can work in partially
 observable reinforcement learning. It constructs filters that reproduce HMM
