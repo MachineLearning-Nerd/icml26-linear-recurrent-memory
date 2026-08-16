@@ -1,0 +1,34 @@
+cff-version: 1.2.0
+message: "Please cite the original paper and this independent evidence audit."
+type: software
+title: "icml26-linear-recurrent-memory: Evidence audit for Why Linear Recurrent Memory Works in Partially Observable Reinforcement Learning"
+version: "1.0.0"
+authors:
+  - family-names: "MachineLearning-Nerd"
+    given-names: ""
+    email: "MachineLearning-Nerd@users.noreply.github.com"
+repository-code: "https://github.com/MachineLearning-Nerd/icml26-linear-recurrent-memory"
+url: "https://github.com/MachineLearning-Nerd/icml26-linear-recurrent-memory"
+date-released: 2026-08-16
+keywords:
+  - partially observable reinforcement learning
+  - linear recurrent memory
+  - hidden Markov models
+  - reproducibility
+preferred-citation:
+  type: article
+  title: "Why Linear Recurrent Memory Works in Partially Observable Reinforcement Learning"
+  authors:
+    - family-names: "Zhao"
+      given-names: "Yike"
+    - family-names: "Eberhard"
+      given-names: "Onno"
+    - family-names: "Khammassi"
+      given-names: "Malek"
+    - family-names: "Sayed"
+      given-names: "Ali H."
+    - family-names: "Muehlebach"
+      given-names: "Michael"
+  year: 2026
+  doi: "10.48550/arXiv.2605.31261"
+  url: "https://arxiv.org/abs/2605.31261"

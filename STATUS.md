@@ -1,25 +1,46 @@
-# STATUS — Linear Recurrent Memory (ywjHJIkUgW) reproduction
+# Status — icml26-linear-recurrent-memory
 
-**Session:** autoloop. **Last updated:** 2026-07-17. **State: ✅ PUBLISHED (under_verdict).**
-HF: https://huggingface.co/spaces/DineshAI/ywjHJIkUgW · GitHub: https://github.com/MachineLearning-Nerd/icml26-repro-ywjHJIkUgW-linear-recurrent-memory (commit e9ecf65).
+**Paper:** *Why Linear Recurrent Memory Works in Partially Observable Reinforcement Learning*
+**Authors:** Yike Zhao, Onno Eberhard, Malek Khammassi, Ali H. Sayed, and Michael Muehlebach
+**Sources:** [arXiv:2605.31261](https://arxiv.org/abs/2605.31261) · [OpenReview ywjHJIkUgW](https://openreview.net/forum?id=ywjHJIkUgW)
 
-## Paper
-- **Title:** Why Linear Recurrent Memory Works in Partially Observable RL. arXiv 2605.31261 · OpenReview ywjHJIkUgW.
-- **No official code** — the claim is a clean algebraic identity, so no code is needed (verified by direct computation).
+## Release state
 
-## Official claims — BOTH VERIFIED
-1. "Linear filters can exactly reproduce the pre-softmax logits of the belief vector in an HMM under a deterministic transition matrix." → **VERIFIED bit-exact** (max diff 0.0): the linear recurrence `l_t = T·l_{t-1} + log e_t` reproduces the HMM belief logits exactly under deterministic T (the forward log-sum-exp collapses to one term). Two independent code paths (logsumexp log-forward vs linear recurrence) agree.
-2. "Constructed linear filters achieve vanishing state-decoding error under nearly-deterministic transition matrices." → **VERIFIED**: TV decoding error vanishes monotonically (0.503 → 0.009) as the transition matrix → deterministic.
+The cumulative evidence release is documented and repeatable. Claims 1, 2, 3,
+and 5 have verified finite or proof-audit paths. Claim 4 is explicitly
+`BLOCKED`; no proxy result is promoted as a RingWorld reproduction.
 
-## Evidence
-- `repro/src/run_lrm.py` — C1 (exact) + C2 (vanishing) + stochastic-T negative control.
-- `repro/tests/test_lrm.py` — 3/3 pass.
-- Negative control: stochastic T → mismatch (max diff 14.8), proving linearity is specific to determinism.
-- All captured via `trackio logbook run`.
+## Evidence summary
 
-## DONE
-- [x] scaffold + venv + implement + verify + tests.
-- [x] logbook + publish → DineshAI/ywjHJIkUgW; GitHub pushed.
+- C1 exact deterministic-transition logit identity: maximum discrepancy `0.0`;
+  stochastic-transition control mismatch `14.814854322993483`.
+- C2 theorem certificate: `xi=0.7206014018371381`, 416 bounded models
+  searched, 312 satisfying the declared assumptions, no counterexample, and
+  independent quadrature agreement.
+- C3 action-controlled certificate: four actions, `xi=0.026480946096894026`,
+  `kappa=554.2122392876782`, exact arbitrary-initialization error below
+  `5.7e-14`, and independent action checks.
+- C5 finite Section 6.1 sweep: 23 inverse-epsilon points, 20,000 trajectories
+  per replicate, four replicates, all six decoders, Bayes LOF, uncertainty,
+  and a rejected label-swap control.
+- C4 RingWorld: blocked because the full protocol is not uniquely specified or
+  runnable from the released sources. The blocker dossier calculates 56
+  training runs, `1.68e9` environment steps, and at least `5.04e10`
+  sample-epoch passes for the paper-faithful Figure 3 protocol.
 
-## NEXT
-- Watch the verdict. Clean exact-identity + negative control + tests → expect verified.
+## Evidence boundaries
+
+- The C2/C3 `VERIFIED` labels come from executable audits of the paper's
+  finite-state derivation and assumptions, not a proof-assistant formalization.
+- The C5 experiment is finite empirical evidence and does not independently
+  prove the universal C2/C3 limits.
+- The C4 result is `BLOCKED`, not `FALSIFIED`; missing code and protocol detail
+  prevent a fair faithful test.
+- The arXiv HTML fingerprint and source audit are provenance records; no claim
+  is made that the paper's plotted RingWorld curves were regenerated.
+
+## Provenance
+
+The complete claim ledger is in [`CLAIM_EVIDENCE.md`](CLAIM_EVIDENCE.md), source
+and artifact details are in [`SOURCE_MANIFEST.md`](SOURCE_MANIFEST.md), and
+branch/history state is in [`BRANCH_AUDIT.md`](BRANCH_AUDIT.md).

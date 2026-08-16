@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify the two claims of "Why Linear Recurrent Memory Works in PORL" (arXiv 2605.31262).
+"""Verify the claims of "Why Linear Recurrent Memory Works in PORL" (arXiv 2605.31261).
 
 C1 (exact identity): a LINEAR filter / linear RNN  l_t = T l_{t-1} + log e_t
 exactly reproduces the pre-softmax logits (log alpha_t) of the HMM belief vector
