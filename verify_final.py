@@ -122,7 +122,7 @@ def check_docs() -> None:
         "fixed_filter_certificate",
         "action_filter_certificate",
         "claim4_blocker.py",
-        "NOT",
+        "not a proof-assistant",
     ):
         if marker not in evidence:
             fail(f"claim evidence is missing marker: {marker}")
